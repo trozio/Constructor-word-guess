@@ -2,15 +2,14 @@ let Letter = function Letter(character) {
 	this.character = character;
 	this.guess = false;
 	this.correct = function() {
-		if (guess === true) {
-			return this.character;
+		if (this.guess === false) {
+			this.character = "_";
 		}
-		return "_";
 	}
-	this.check = function(q) {
-		if (q === character) {
+	this.check = function(g) {
+		if (g === this.character) {
 			this.guess = true;
 		}
 	}
 };
-module.exports = Letter
+module.exports = Letter;

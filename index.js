@@ -3,8 +3,21 @@ let inquirer = require("inquirer");
 let wordBank = ["hello", "hi", "good", "drive"];
 let word = new Word(wordBank[Math.floor(Math.random() * 3) + 1]);
 
-function displayWord() {
-	word.showLetters();
-	console.log(word.letters);
+
+function inquire() {
+	inquirer.prompt([{
+			name: "Letter",
+			message: "Guess a letter!",
+			type: "input"
+		}
+
+	]).then(results => {
+		word.cGuess(results.Letter);
+		word.jWord();
+		inquire();
+
+	})
 }
-displayWord();
+word.joinLetters();
+word.jWord();
+inquire();
